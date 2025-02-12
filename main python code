@@ -1,0 +1,82 @@
+list= []
+a=1
+disc= 0.0
+print("Welcome to grocerie shop")
+
+while(a):
+  print("Please select any one option")
+  print("1.) Add Vegetables in  Cart.")
+  print("2.) Add Fruits in Cart.")
+  print("3.) Add other items.")
+  print("4.) Check items in the cart")
+  print("5.) Get Bill for the present cart")
+  print("6.) Restart the cart")
+  f=int(input("Enter the function number you want to do?"))
+
+  if(f==1):
+    n = int(input("Enter no. of vegetables bought:"))
+    for i in range (0,n):
+      name = input("Enter name of vegetable ")
+      cost =float(input("Enter cost of vegetable per kg"))
+      qty = float(input("Enter the weight of vegetable bought in kg"))
+      if(cost*qty > 100):
+        disc= 10/100 * cost*qty
+      l= [name,cost,qty,disc]
+      list.append(l)
+
+  if(f==2):
+    n= int(input("Enter no. of Fruits bought:"))
+    for i in range(0,n):
+      name = (input("Enter name of fruit"))
+      cost = float(input("Enter cost of fruit"))
+      qty = float(input("Enter the weight of fruit bought in kg"))
+      if(cost*qty > 100):
+        disc= 10/100 * cost*qty
+      l= [name,cost,qty,disc]
+      list.append(l)
+  if(f==3):
+    n= int(input("Enter no. of other items brought:"))
+    for i in range(0,n):
+      name= input("Enter name of item:")
+      cost= float(input("Enter cost of item"))
+      qty= float(input("Enter weight or quantity of item brought:"))
+      if(cost*qty > 100):
+        disc= 10/100 * cost*qty
+      l= [name,cost,qty,disc]
+      list.append(l)
+  
+  if(f==4):
+    print("The items in the cart are:")
+    print(list)
+  if(f==5):
+    print("BILL : ")
+    print("[Name of item  Cost of item  Quantity  Discount]")
+    for i in range(0,len(list)):
+      print(f'{     list[i][0]}      {list[i][1]}      {list[i][2]}      {list[i][3]:.02f}')
+      total= sum(list[i][1]*list[i][2]-list[i][3] for i in range(0,len(list)))
+      print("Total : ",total)
+    discc=0.0
+    if(total>1000):
+      discc= 10/100 * total
+      print("Additional Discount",discc)
+    print("Grand Total: ", total - discc)  
+
+
+    print("Do you want to update the cart?")
+    y= input("Enter 1 to update or 0 to exit.")
+    if(y):
+      a=1
+    else:
+      a=0
+      list=[]
+      print("Thanks for shopping")
+      break
+      
+
+  if(f==6):
+    list =[]
+  print("                       *************************************************")
+  print("***************************************")
+  print("                                           ")
+  print("                                           ")
+    
